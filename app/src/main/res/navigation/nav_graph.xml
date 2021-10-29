@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/overviewFragment">
+
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.overview.OverViewFragment"
+        android:label="fragment_overview"
+        tools:layout="@layout/fragment_over_view" >
+        <action
+            android:id="@+id/action_showDetail"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_booksFragment"
+            app:destination="@id/booksFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.aysesenses.hepsiburada_case_study.network.ItunesProperty"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ebook.EBookFragment"
+        android:label="fragment_books"
+        tools:layout="@layout/fragment_ebook">
+        <argument
+            android:name="selectedBookProperty"
+            app:argType="com.aysesenses.hepsiburada_case_study.network.EBookProperty"/>
+    </fragment>
+
+
+</navigation>
