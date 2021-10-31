@@ -3,8 +3,6 @@
     package="com.aysesenses.hepsiburada_case_study">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
 
     <application
         android:allowBackup="true"
@@ -14,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hepsiburada_case_study">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

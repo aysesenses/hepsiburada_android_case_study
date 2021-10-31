@@ -6,7 +6,7 @@
     <string name="movies">Movies</string>
     <string name="books">Books</string>
     <string name="apps">Apps</string>
-    <string name="search">search</string>
+    <string name="search">Search</string>
     <string name="searchHint">tap to search anything</string>
     <string name="loadingStatusImage">loading</string>
     <string name="recyclerViewDescription">result list</string>
@@ -14,4 +14,11 @@
     <string name="musicToggle">Music</string>
     <string name="appsToggle">Apps</string>
     <string name="booksToggle">Books</string>
+    <string name="the_new_music_thats_matters">The new music thats matters</string>
+    <string name="the_newests">The Newests</string>
+    <string name="podcast">Podcast</string>
+    <string name="version">Version:</string>
+    <string name="release_note">Release Note</string>
+    <string name="about_this_app">About This App</string>
+    <string name="min_os_version">Min OS Version:</string>
 </resources>

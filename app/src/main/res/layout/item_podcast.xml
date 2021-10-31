@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/collection_image"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{property.artworkUrl100}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedCorners"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/item_track_name_text"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_height_small"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{property.collectionName}"
+                android:textSize="@dimen/medium_text_size_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/collection_image"
+                tools:text="Candy Coated Christmas" />
+
+            <TextView
+                android:id="@+id/artist_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:text="@{property.artistName}"
+                app:layout_constraintEnd_toEndOf="@+id/item_track_name_text"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/item_track_name_text"
+                app:layout_constraintTop_toBottomOf="@+id/item_track_name_text"
+                tools:text="Shakira R. Thompson" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+        <variable
+            name="property"
+            type="com.aysesenses.hepsiburada_case_study.data.model.podcast.PodcastProperty" />
+    </data>
+
+</layout>

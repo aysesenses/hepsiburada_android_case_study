@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/trackname_text"
+                app:layout_constraintStart_toEndOf="@+id/trackname_text"
+                app:layout_constraintTop_toTopOf="@+id/trackname_text"
+                app:rating="@{viewModel.selectedAppProperty.averageUserRating}" />
+
+            <TextView
+                android:id="@+id/collection_name_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedAppProperty.artistName}"
+                android:textAlignment="viewStart"
+                android:textColor="#de000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view"
+                tools:text="The Story of Sha'el: A Dark Fantasy Adventure Novella" />
+
+            <TextView
+                android:id="@+id/collection_price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:textColor="#de000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvVersion"
+                app:price="@{viewModel.selectedAppProperty.price.toString()}"
+                tools:text="19.99$" />
+
+            <TextView
+                android:id="@+id/realese_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                app:layout_constraintBaseline_toBaselineOf="@+id/collection_price_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/collection_price_text"
+                app:realeseDate="@{viewModel.selectedAppProperty.releaseDate}"
+                tools:text="2021-09-01T16:00:00Z" />
+
+            <TextView
+                android:id="@+id/trackname_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small_4dp"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedAppProperty.artistName}"
+                android:textAlignment="viewStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/collection_name_text"
+                tools:text="Dartanyan Johnson" />
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:textSize="14sp"
+                app:descriptionText="@{viewModel.selectedAppProperty.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAboutThisApp"
+                tools:text="description" />
+
+            <TextView
+                android:id="@+id/user_rating_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedAppProperty.userRatingCount.toString()}"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/trackname_text"
+                app:layout_constraintStart_toEndOf="@+id/ratingBar"
+                tools:text="1100" />
+
+            <TextView
+                android:id="@+id/tvVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/version"
+                app:layout_constraintStart_toStartOf="@+id/trackname_text"
+                app:layout_constraintTop_toBottomOf="@+id/trackname_text" />
+
+            <TextView
+                android:id="@+id/app_version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small_4dp"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedAppProperty.version}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvVersion"
+                app:layout_constraintStart_toEndOf="@+id/tvVersion"
+                tools:text="8.2" />
+
+            <TextView
+                android:id="@+id/tvReleaseNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/release_note"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/collection_price_text"
+                app:layout_constraintTop_toBottomOf="@+id/collection_price_text" />
+
+            <TextView
+                android:id="@+id/releasenote_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:textSize="16sp"
+                app:descriptionText="@{viewModel.selectedAppProperty.releaseNotes}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvReleaseNote"
+                app:layout_constraintTop_toBottomOf="@+id/tvReleaseNote"
+                tools:text="release note" />
+
+            <TextView
+                android:id="@+id/tvAboutThisApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/about_this_app"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/releasenote_text"
+                app:layout_constraintTop_toBottomOf="@+id/releasenote_text" />
+
+            <TextView
+                android:id="@+id/tvMinVersionOS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/min_os_version"
+                app:layout_constraintBaseline_toBaselineOf="@+id/app_version_text"
+                app:layout_constraintStart_toEndOf="@+id/app_version_text" />
+
+            <TextView
+                android:id="@+id/min_version_os_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small_4dp"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedAppProperty.minimumOsVersion.toString()}"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvMinVersionOS"
+                app:layout_constraintStart_toEndOf="@+id/tvMinVersionOS"
+                tools:text="10.0" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/image_height"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.selectedAppProperty.artworkUrl100}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedCorners"
+                tools:src="@tools:sample/backgrounds/scenic" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.AppViewModel" />
+    </data>
+</layout>

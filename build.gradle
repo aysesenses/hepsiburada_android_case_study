@@ -16,7 +16,6 @@ buildscript {
 
 
 ext {
-
     lifecycleVersion = '2.3.1'
     livedataVersion = '2.3.1'
     segmentedVersion = "v2.0.2"

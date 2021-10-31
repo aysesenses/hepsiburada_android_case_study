@@ -3,40 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/overviewFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/overviewFragment"
-        android:name="com.aysesenses.hepsiburada_case_study.overview.OverViewFragment"
-        android:label="fragment_overview"
-        tools:layout="@layout/fragment_over_view" >
+        android:id="@+id/homeFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_showDetail"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/overviewMusicFragment" />
         <action
-            android:id="@+id/action_booksFragment"
+            android:id="@+id/action_ebooksFragment"
             app:destination="@id/booksFragment" />
+        <action
+            android:id="@+id/action_podcastFragment"
+            app:destination="@id/podcastFragment" />
+        <action
+            android:id="@+id/action_movieFragment"
+            app:destination="@id/movieFragment" />
+        <action
+            android:id="@+id/action_musicFragment"
+            app:destination="@id/musicFragment" />
+        <action
+            android:id="@+id/action_appFragment"
+            app:destination="@id/appFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.aysesenses.hepsiburada_case_study.detail.DetailFragment"
+        android:id="@+id/overviewMusicFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.OverviewMusicFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail">
+        tools:layout="@layout/fragment_overview_music">
         <argument
             android:name="selectedProperty"
-            app:argType="com.aysesenses.hepsiburada_case_study.network.ItunesProperty"/>
+            app:argType="com.aysesenses.hepsiburada_case_study.data.model.music.MusicProperty"/>
     </fragment>
 
     <fragment
         android:id="@+id/booksFragment"
-        android:name="com.aysesenses.hepsiburada_case_study.ebook.EBookFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.EBookFragment"
         android:label="fragment_books"
         tools:layout="@layout/fragment_ebook">
         <argument
             android:name="selectedBookProperty"
-            app:argType="com.aysesenses.hepsiburada_case_study.network.EBookProperty"/>
+            app:argType="com.aysesenses.hepsiburada_case_study.data.model.ebook.EBookProperty"/>
     </fragment>
-
-
+    <fragment
+        android:id="@+id/podcastFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.PodcastFragment"
+        android:label="fragment_podcast"
+        tools:layout="@layout/fragment_podcast">
+        <argument
+            android:name="selectedPodcastProperty"
+            app:argType="com.aysesenses.hepsiburada_case_study.data.model.podcast.PodcastProperty"/>
+    </fragment>
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie">
+        <argument
+            android:name="selectedMovieProperty"
+            app:argType="com.aysesenses.hepsiburada_case_study.data.model.movie.MovieProperty"/>
+    </fragment>
+    <fragment
+        android:id="@+id/musicFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.MusicFragment"
+        android:label="fragment_music"
+        tools:layout="@layout/fragment_music">
+        <argument
+            android:name="selectedMusicProperty"
+            app:argType="com.aysesenses.hepsiburada_case_study.data.model.music.MusicProperty"/>
+    </fragment>
+    <fragment
+        android:id="@+id/appFragment"
+        android:name="com.aysesenses.hepsiburada_case_study.ui.main.view.AppFragment"
+        android:label="fragment_app"
+        tools:layout="@layout/fragment_app">
+        <argument
+            android:name="selectedAppProperty"
+            app:argType="com.aysesenses.hepsiburada_case_study.data.model.app.AppProperty"/>
+    </fragment>
 </navigation>

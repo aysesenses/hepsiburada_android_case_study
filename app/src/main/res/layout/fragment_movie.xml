@@ -13,20 +13,20 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/medium_padding">
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/collection_name_text"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:stepSize="0.5"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/trackname_text"
-                app:layout_constraintStart_toEndOf="@+id/trackname_text"
-                app:layout_constraintTop_toTopOf="@+id/trackname_text"
-                app:rating="@{viewModel.selectedEBookProperty.averageUserRating}" />
+                android:layout_marginTop="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedMovieProperty.trackName}"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_text_size_24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view"
+                tools:text="The Story of Sha'el: A Dark Fantasy Adventure Novella" />
 
             <TextView
                 android:id="@+id/collection_price_text"
@@ -35,10 +35,10 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:fontFamily="@font/sf_pro"
                 android:textColor="#de000000"
-                android:textSize="@dimen/medium_text_size_20sp"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/trackname_text"
-                app:price="@{viewModel.selectedEBookProperty.price.toString()}"
+                app:layout_constraintTop_toBottomOf="@+id/movieGenreName_text"
+                app:price="@{viewModel.selectedMovieProperty.collectionPrice.toString()}"
                 tools:text="19.99$" />
 
             <TextView
@@ -53,7 +53,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/collection_price_text"
                 app:layout_constraintTop_toTopOf="@+id/collection_price_text"
-                app:realeseDate="@{viewModel.selectedEBookProperty.releaseDate}"
+                app:realeseDate="@{viewModel.selectedMovieProperty.releaseDate}"
                 tools:text="2021-09-01T16:00:00Z" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro"
-                android:text="@{viewModel.selectedEBookProperty.artistName}"
+                android:text="@{viewModel.selectedMovieProperty.artistName}"
                 android:textAlignment="viewStart"
                 android:textSize="@dimen/medium_text_size_20sp"
                 android:textStyle="bold"
@@ -70,65 +70,76 @@
                 tools:text="Dartanyan Johnson" />
 
             <TextView
-                android:id="@+id/collection_name_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:fontFamily="@font/sf_pro"
-                android:text="@{viewModel.selectedEBookProperty.trackName}"
-                android:textAlignment="viewStart"
-                android:textColor="#de000000"
-                android:textSize="@dimen/large_text_size_24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_view"
-                tools:text="The Story of Sha'el: A Dark Fantasy Adventure Novella" />
-
-            <TextView
                 android:id="@+id/description_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium_24dp"
                 android:fontFamily="@font/sf_pro"
                 android:textSize="@dimen/medium_text_size_16sp"
-                app:descriptionText="@{viewModel.selectedEBookProperty.description}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:descriptionText="@{viewModel.selectedMovieProperty.longDescription}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/collection_price_text"
                 tools:text="description" />
 
+
             <TextView
-                android:id="@+id/user_rating_text"
+                android:id="@+id/user_rating_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:text="@{viewModel.selectedEBookProperty.userRatingCount.toString()}"
+                android:layout_marginStart="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
                 android:textSize="@dimen/medium_text_size_16sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/trackname_text"
-                app:layout_constraintStart_toEndOf="@+id/ratingBar"
-                tools:text="18" />
+                app:layout_constraintStart_toEndOf="@+id/trackname_text"
+                app:time="@{viewModel.selectedMovieProperty.trackTimeMillis.toString()}"
+                tools:text="1100" />
+
+            <TextView
+                android:id="@+id/movieGenreName_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small_4dp"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedMovieProperty.primaryGenreName}"
+                android:textSize="@dimen/medium_text_size_16sp"
+                app:layout_constraintStart_toStartOf="@+id/trackname_text"
+                app:layout_constraintTop_toBottomOf="@+id/trackname_text"
+                tools:text="Concert Films" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedMovieProperty.contentAdvisoryRating}"
+                android:textSize="@dimen/medium_text_size_16sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/movieGenreName_text"
+                app:layout_constraintStart_toEndOf="@+id/movieGenreName_text"
+                tools:text="R" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_view"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/image_height"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{viewModel.selectedEBookProperty.artworkUrl100}"
+                app:imageUrl="@{viewModel.selectedMovieProperty.artworkUrl100}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/roundedCorners"
                 tools:src="@tools:sample/backgrounds/scenic" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
-            type="com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.EBookViewModel" />
+            type="com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.MovieViewModel" />
     </data>
 </layout>

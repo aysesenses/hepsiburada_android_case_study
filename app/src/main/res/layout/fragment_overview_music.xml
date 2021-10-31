@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".OverviewFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_padding">
+
+            <TextView
+                android:id="@+id/collection_name_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedOverviewMusicProperty.trackName}"
+                android:textAlignment="viewStart"
+                android:textColor="#de000000"
+                android:textSize="@dimen/large_text_size_24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view"
+                tools:text="The Story of Sha'el: A Dark Fantasy Adventure Novella" />
+
+            <TextView
+                android:id="@+id/collection_price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_text_size_24sp"
+                app:layout_constraintEnd_toStartOf="@+id/realese_date_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/primary_genre_name_text"
+                app:price="@{viewModel.selectedOverviewMusicProperty.collectionPrice.toString()}"
+                tools:text="19.99$" />
+
+            <TextView
+                android:id="@+id/realese_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:fontFamily="@font/sf_pro"
+                android:textSize="@dimen/medium_text_size_16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/collection_price_text"
+                app:layout_constraintStart_toEndOf="@+id/collection_price_text"
+                app:realeseDate="@{viewModel.selectedOverviewMusicProperty.releaseDate}"
+                tools:text="2021-09-01T16:00:00Z" />
+
+            <TextView
+                android:id="@+id/trackname_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedOverviewMusicProperty.artistName}"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/medium_text_size_20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/primary_genre_name_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/collection_name_text"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Dartanyan Johnson" />
+
+            <TextView
+                android:id="@+id/user_rating_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:textSize="@dimen/medium_text_size_16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/trackname_text"
+                app:layout_constraintStart_toEndOf="@+id/trackname_text"
+                app:time="@{viewModel.selectedOverviewMusicProperty.trackTimeMillis.toString()}"
+                tools:text="1100" />
+
+            <TextView
+                android:id="@+id/primary_genre_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:text="@{viewModel.selectedOverviewMusicProperty.primaryGenreName}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/collection_price_text"
+                app:layout_constraintStart_toStartOf="@+id/trackname_text"
+                app:layout_constraintTop_toBottomOf="@+id/trackname_text"
+                tools:text="pop" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/image_height"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.selectedOverviewMusicProperty.artworkUrl100}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedCorners"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.OverviewMusicViewModel" />
+    </data>
+
+</layout>

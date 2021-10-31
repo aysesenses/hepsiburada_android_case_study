@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".OverViewFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/status_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/loadingStatusImage"
+                app:itunesApiStatus="@{viewModel.status}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_height_48dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/search"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_text_size_34sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintStart_toStartOf="@+id/searchView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvBrowse"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_height_48dp"
+                android:layout_marginTop="@dimen/margin_medium_24dp"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/podcast"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_text_size_30sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintStart_toStartOf="@+id/toggleButtonGroup"
+                app:layout_constraintTop_toBottomOf="@+id/toggleButtonGroup" />
+
+            <TextView
+                android:id="@+id/tvNewests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro"
+                android:text="@string/the_newests"
+                android:textAlignment="viewStart"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/tvBrowse"
+                app:layout_constraintTop_toBottomOf="@+id/tvBrowse" />
+
+
+            <TextView
+                android:id="@+id/tvMusic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/music"
+                android:textColor="@color/black"
+                android:textSize="@dimen/large_text_size_30sp"
+                android:textStyle="bold"
+                app:drawableLeftCompat="@drawable/ic_apple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/podcast_grid" />
+
+            <TextView
+                android:id="@+id/tvTheNewMusic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/the_new_music_thats_matters"
+                app:layout_constraintStart_toStartOf="@+id/tvMusic"
+                app:layout_constraintTop_toBottomOf="@+id/tvMusic" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_height_48dp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSearch"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="@string/searchHint">
+
+            </androidx.appcompat.widget.SearchView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/books_grid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:clipToPadding="false"
+                android:contentDescription="@string/recyclerViewDescription"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toggleButtonGroup"
+                app:listBook="@{viewModel.books}"
+                app:spanCount="2"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_overview_music" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_grid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:clipToPadding="false"
+                android:contentDescription="@string/recyclerViewDescription"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toggleButtonGroup"
+                app:listMovie="@{viewModel.movies}"
+                app:spanCount="2"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_overview_music" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/music_grid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:clipToPadding="false"
+                android:contentDescription="@string/recyclerViewDescription"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toggleButtonGroup"
+                app:listMusic="@{viewModel.musics}"
+                app:spanCount="2"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_overview_music" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/apps_grid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:clipToPadding="false"
+                android:contentDescription="@string/recyclerViewDescription"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toggleButtonGroup"
+                app:listApp="@{viewModel.apps}"
+                app:spanCount="2"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_overview_music" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/podcast_grid"
+                listPodcast="@{viewModel.podcasts}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/medium_text_size_16sp"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/tvMusic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNewests"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_podcast" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/overview_music_grid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:contentDescription="@string/recyclerViewDescription"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTheNewMusic"
+                app:listOverviewMusic="@{viewModel.musics}"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_overview_music" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleButtonGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small_4dp"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:clickable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchView"
+                app:singleSelection="true">
+
+                <Button
+                    android:id="@+id/btnMovie"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro"
+                    android:text="@string/moviesToggle"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <Button
+                    android:id="@+id/btnMusic"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro"
+                    android:text="@string/musicToggle"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <Button
+                    android:id="@+id/btnApps"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro"
+                    android:text="@string/appsToggle"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <Button
+                    android:id="@+id/btnBooks"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro"
+                    android:text="@string/booksToggle"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.HomeViewModel" />
+    </data>
+</layout>
