@@ -20,4 +20,7 @@
     <dimen name="item_small_image_width">64dp</dimen>
     <dimen name="item_image_small_height">64dp</dimen>
     <dimen name="text_height_small">24dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="splash_image_width">200dp</dimen>
+    <dimen name="splash_image_height">200dp</dimen>
 </resources>
