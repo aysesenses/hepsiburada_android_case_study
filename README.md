@@ -1,5 +1,5 @@
 # hepsiburada_android_case_study
-# aplle-music-app
+# apple-music-app
 
 Android app with [utines-api](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html)
 
