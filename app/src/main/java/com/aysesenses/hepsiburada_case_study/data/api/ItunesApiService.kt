@@ -21,14 +21,14 @@ private val retrofit = Retrofit.Builder()
 
 interface ItunesApiService {
     @GET("search?limit=20")
-    fun search(@Query("term") term: String):
+    fun searchOverviewMusic(@Query("term") term: String):
             Call<MusicResponse>
 
     @GET("search?entity=ebook&limit=20")
     fun searchEBook(@Query("term") term: String):
             Call<EBookResponse>
 
-    @GET("search?entity=podcast&limit=20")
+    @GET("search?limit=20")
     fun searchPodcast(@Query("term") term: String):
             Call<PodcastResponse>
 

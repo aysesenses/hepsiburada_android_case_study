@@ -8,7 +8,7 @@ import com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.AppViewModel
 class AppViewModelFactory (
     private val appProperty: AppProperty
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AppViewModel::class.java)) {
             return AppViewModel(appProperty) as T
         }

@@ -8,7 +8,7 @@ import com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.EBookViewModel
 class EBookViewModelFactory (
     private val eBookProperty: EBookProperty
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EBookViewModel::class.java)) {
             return EBookViewModel(eBookProperty) as T
         }

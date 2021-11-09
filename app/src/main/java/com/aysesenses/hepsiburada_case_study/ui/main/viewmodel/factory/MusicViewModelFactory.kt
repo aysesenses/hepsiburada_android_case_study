@@ -8,7 +8,7 @@ import com.aysesenses.hepsiburada_case_study.ui.main.viewmodel.MusicViewModel
 class MusicViewModelFactory (
     private val musicProperty: MusicProperty
 ) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MusicViewModel::class.java)) {
             return MusicViewModel(musicProperty) as T
         }

@@ -23,6 +23,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
                 android:id="@+id/tvSearch"
                 android:layout_width="wrap_content"
@@ -69,10 +70,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
                 android:text="@string/music"
                 android:textColor="@color/black"
-                android:textSize="@dimen/large_text_size_30sp"
+                android:textSize="@dimen/large_text_size_34sp"
                 android:textStyle="bold"
                 app:drawableLeftCompat="@drawable/ic_apple"
                 app:layout_constraintEnd_toEndOf="parent"

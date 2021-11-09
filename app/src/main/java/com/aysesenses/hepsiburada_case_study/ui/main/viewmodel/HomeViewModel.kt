@@ -3,6 +3,7 @@ package com.aysesenses.hepsiburada_case_study.ui.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.aysesenses.hepsiburada_case_study.data.api.ItunesApi
 import com.aysesenses.hepsiburada_case_study.data.api.ItunesApiStatus
 import com.aysesenses.hepsiburada_case_study.data.model.movie.MovieProperty
@@ -10,16 +11,13 @@ import com.aysesenses.hepsiburada_case_study.data.model.music.MusicProperty
 import com.aysesenses.hepsiburada_case_study.data.model.app.AppProperty
 import com.aysesenses.hepsiburada_case_study.data.model.ebook.EBookProperty
 import com.aysesenses.hepsiburada_case_study.data.model.podcast.PodcastProperty
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.await
 
 class HomeViewModel : ViewModel() {
 
-    private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    //private var viewModelJob = Job()
+    //private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _status = MutableLiveData<ItunesApiStatus>()
     val status: LiveData<ItunesApiStatus>
@@ -72,12 +70,12 @@ class HomeViewModel : ViewModel() {
 
     init {
         doPodcastSearch("podcast")
-        doSearch("music")
+        doOverviewMusicSearch("music")
     }
 
-    fun doSearch(term: String) {
-        coroutineScope.launch {
-            val getPropertiesDeferred = ItunesApi.retrofitService.searchMusic(term)
+    fun doOverviewMusicSearch(term: String) {
+        viewModelScope.launch {
+            val getPropertiesDeferred = ItunesApi.retrofitService.searchOverviewMusic(term)
 
             try {
                 _status.value = ItunesApiStatus.LOADING
@@ -94,7 +92,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun doBooksSearch(term: String) {
-        coroutineScope.launch {
+        viewModelScope.launch {
             val getPropertiesDeferred = ItunesApi.retrofitService.searchEBook(term)
 
             try {
@@ -112,7 +110,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun doPodcastSearch(term: String) {
-        coroutineScope.launch {
+        viewModelScope.launch {
             val getPropertiesDeferred = ItunesApi.retrofitService.searchPodcast(term)
 
             try {
@@ -130,7 +128,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun doAppSearch(term: String) {
-        coroutineScope.launch {
+        viewModelScope.launch {
             val getPropertiesDeferred = ItunesApi.retrofitService.searchApp(term)
 
             try {
@@ -148,7 +146,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun doMovieSearch(term: String) {
-        coroutineScope.launch {
+        viewModelScope.launch {
             val getPropertiesDeferred = ItunesApi.retrofitService.searchMovie(term)
 
             try {
@@ -166,7 +164,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun doMusicSearch(term: String) {
-        coroutineScope.launch {
+        viewModelScope.launch {
             val getPropertiesDeferred = ItunesApi.retrofitService.searchMusic(term)
 
             try {
@@ -231,7 +229,7 @@ class HomeViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        viewModelJob.cancel()
+       // viewModelJob.cancel()
     }
 
     fun clearSearchList() {

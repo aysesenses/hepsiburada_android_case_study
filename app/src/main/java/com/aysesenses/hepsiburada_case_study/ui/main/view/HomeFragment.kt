@@ -32,6 +32,9 @@ class HomeFragment : Fragment() {
 
         navigateSelectedProperty()
 
+        viewModel.doPodcastSearch("podcast")
+        viewModel.doOverviewMusicSearch("song")
+
         binding.overviewMusicGrid.adapter = OverviewMusicAdapter(OverviewMusicAdapter.OnClickListener {
             viewModel.overviewMusicPropertyDetails(it)
         })
@@ -129,7 +132,7 @@ class HomeFragment : Fragment() {
                             R.id.btnApps -> viewModel.doAppSearch(term)
                             R.id.btnMusic -> viewModel.doMusicSearch(term)
                             else -> {
-                                viewModel.doSearch(term)
+                                viewModel.doOverviewMusicSearch(term)
                                 viewModel.doPodcastSearch(term)
                             }
                         }
@@ -153,8 +156,7 @@ class HomeFragment : Fragment() {
                 binding.searchView.onActionViewCollapsed()
                 binding.toggleButtonGroup.clearChecked()
                 homeVisibilityVisible(binding)
-                viewModel.doPodcastSearch("aea")
-                viewModel.doSearch("aea")
+
                 return true
             }
         })
@@ -201,9 +203,6 @@ class HomeFragment : Fragment() {
         }
         if (!viewModel.books.value.isNullOrEmpty()){
             binding.booksGrid.visibility = View.VISIBLE
-        }
-        if (!viewModel.apps.value.isNullOrEmpty()){
-            binding.appsGrid.visibility = View.VISIBLE
         }
     }
     fun navigateSelectedProperty(){
